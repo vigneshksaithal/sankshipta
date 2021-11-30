@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row px-4">
+  <div class="col">
+    {% for article in articles %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <div
+          class="
+            badge
+            bg-{%
+            if
+            article['sentiment']
+            ==
+            'positive'
+            %}success{%
+            elif
+            article['sentiment']
+            ==
+            'neutral'
+            %}warning{%
+            else
+            %}danger{%
+            endif
+            %}
+            text-capitalize
+            mb-2
+          "
+        >
+          {{ article['sentiment'] }}
+        </div>
+        <div>
+          <!-- {{ article['topics'] }}  -->
+        </div>
+        <h5 class="card-title">{{ article['title'] }}</h5>
+        <p>{{ article['summary'] }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
