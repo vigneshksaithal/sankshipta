@@ -30,10 +30,16 @@
           {{ article['sentiment'] }}
         </div>
         <div>
-          <!-- {{ article['topics'] }}  -->
+          {% for topic in article['topics'] %}
+          <span class="badge bg-secondary">{{ topic }}</span>
+          {% endfor %}
         </div>
+
+        <!-- {{ article['topics'] }}  -->
+
         <h5 class="card-title">{{ article['title'] }}</h5>
         <p>{{ article['summary'] }}</p>
+        <a class="stretched-link" href="/{{ article['url'] }}">Read full article</a>
       </div>
     </div>
     {% endfor %}
