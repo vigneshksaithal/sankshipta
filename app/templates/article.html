@@ -1,4 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
-<div>{{ article }}</div>
+<div>
+  <h4 class="mb-2">{{ article['title'] }}</h4>
+  <p>{{ article['content'] }}</p>
+</div>
 {% endblock %}

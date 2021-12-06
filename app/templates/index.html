@@ -3,9 +3,9 @@
 <div class="row px-4">
   <div class="col">
     {% for article in articles %}
-    <div class="card mb-3">
+    <div class="card shadow-sm mb-3">
       <div class="card-body">
-        <div
+        <span
           class="
             badge
             bg-{%
@@ -28,18 +28,21 @@
           "
         >
           {{ article['sentiment'] }}
-        </div>
-        <div>
+        </span>
+        <h5>
           {% for topic in article['topics'] %}
-          <span class="badge bg-secondary">{{ topic }}</span>
+          <span class="badge bg-light text-dark">{{ topic }}</span>
           {% endfor %}
+        </h5>
+
+        <h3 class="card-title">{{ article['title'] }}</h3>
+        <div>{{ article['author'] }}</div>
+        <p class="text-secondary">{{ article['summary'] }}</p>
+        <div class="text-end">
+          <a class="btn btn-light stretched-link" href="/{{ article['url'] }}"
+            >Read full article</a
+          >
         </div>
-
-        <!-- {{ article['topics'] }}  -->
-
-        <h5 class="card-title">{{ article['title'] }}</h5>
-        <p>{{ article['summary'] }}</p>
-        <a class="stretched-link" href="/{{ article['url'] }}">Read full article</a>
       </div>
     </div>
     {% endfor %}
