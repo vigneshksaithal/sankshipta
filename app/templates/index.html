@@ -5,42 +5,46 @@
     {% for article in articles %}
     <div class="card shadow-sm mb-3">
       <div class="card-body">
-        <span
-          class="
-            badge
-            bg-{%
-            if
-            article['sentiment']
-            ==
-            'positive'
-            %}success{%
-            elif
-            article['sentiment']
-            ==
-            'neutral'
-            %}warning{%
-            else
-            %}danger{%
-            endif
-            %}
-            text-capitalize
-            mb-2
-          "
-        >
-          {{ article['sentiment'] }}
-        </span>
         <h5>
+          <span
+            class="
+              badge
+              bg-{%
+              if
+              article['sentiment']
+              ==
+              'positive'
+              %}success{%
+              elif
+              article['sentiment']
+              ==
+              'neutral'
+              %}warning{%
+              else
+              %}danger{%
+              endif
+              %}
+              text-capitalize
+              mb-2
+            "
+          >
+            {{ article['sentiment'] }}
+          </span>
+          <span class="mx-2">|</span>
           {% for topic in article['topics'] %}
-          <span class="badge bg-light text-dark">{{ topic }}</span>
+          <span class="badge bg-light text-secondary">{{ topic }}</span>
           {% endfor %}
         </h5>
 
-        <h3 class="card-title">{{ article['title'] }}</h3>
-        <div>{{ article['author'] }}</div>
+        <h2 class="card-title">{{ article['title'] }}</h2>
+        <div class="text-secondary mb-2">
+          <span class="me-2">{{ article['date'] }}</span>
+          {{ article['author'] }}
+        </div>
         <p class="text-secondary">{{ article['summary'] }}</p>
         <div class="text-end">
-          <a class="btn btn-light stretched-link" href="/{{ article['url'] }}"
-            >Read full article</a
+          <a class="btn btn-light" href="/{{ article['url'] }}"
+            >Read full article ></a
           >
         </div>
       </div>
